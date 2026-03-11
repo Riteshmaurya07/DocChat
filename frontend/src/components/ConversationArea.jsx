@@ -1,7 +1,17 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import ReactMarkdown from "react-markdown";
 
 const ConversationArea = ({ answers, loading }) => {
+  const messagesEndRef = useRef(null);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [answers, loading]);
+
   return (
     <div className="space-y-6 pb-4">
       {answers.map((item, index) => (
@@ -43,6 +53,7 @@ const ConversationArea = ({ answers, loading }) => {
           </div>
         </div>
       )}
+      <div ref={messagesEndRef} />
     </div>
   );
 };
