@@ -22,7 +22,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 // ---------- DATABASE ----------
-connectDB();
+connectDB(); 
 
 // ---------- ROUTES ----------
 app.use("/api/auth", authRoutes);
